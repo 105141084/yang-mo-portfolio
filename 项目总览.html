@@ -1,0 +1,797 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>杨莫作品集 · 项目总览</title>
+    <style>
+      :root {
+        --paper: #f1eee3;
+        --ink: #10110f;
+        --signal: #143dff;
+        --olive: #5f6346;
+        --mist: #c9ccb3;
+        --line: rgba(16, 17, 15, 0.2);
+        --pad: clamp(1rem, 4vw, 4rem);
+        --serif: "Songti SC", "STSong", "SimSun", serif;
+        --sans: "PingFang SC", "Microsoft YaHei", sans-serif;
+        --mono: "SFMono-Regular", Consolas, monospace;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        color: var(--ink);
+        background: var(--paper);
+        font-family: var(--sans);
+      }
+
+      a {
+        color: inherit;
+      }
+
+      .shell {
+        width: min(100%, 1560px);
+        margin: 0 auto;
+        padding: 0 var(--pad);
+      }
+
+      .topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 2rem;
+        min-height: 4.5rem;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .mark {
+        font-size: 1.3rem;
+        font-weight: 800;
+        letter-spacing: -0.08em;
+        text-decoration: none;
+      }
+
+      .mark sup {
+        margin-left: 0.15rem;
+        color: var(--signal);
+        font-family: var(--mono);
+        font-size: 0.5rem;
+        font-weight: 400;
+      }
+
+      .top-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.2rem;
+        font-size: 0.78rem;
+      }
+
+      .top-links a {
+        text-decoration: none;
+      }
+
+      .top-links a:hover {
+        color: var(--signal);
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: minmax(0, 1.45fr) minmax(18rem, 0.55fr);
+        gap: clamp(2rem, 7vw, 8rem);
+        align-items: end;
+        min-height: min(80vh, 50rem);
+        padding-block: clamp(4rem, 9vw, 9rem);
+      }
+
+      .eyebrow {
+        font-family: var(--mono);
+        font-size: 0.68rem;
+        line-height: 1.6;
+        letter-spacing: 0.01em;
+      }
+
+      .hero h1 {
+        max-width: 12ch;
+        margin: 1.5rem 0 0;
+        font-family: var(--serif);
+        font-size: clamp(4.4rem, 10vw, 10.5rem);
+        font-weight: 500;
+        line-height: 0.9;
+        letter-spacing: -0.08em;
+      }
+
+      .hero h1 span {
+        color: transparent;
+        -webkit-text-stroke: 1px var(--ink);
+      }
+
+      .hero__side {
+        display: grid;
+        gap: 1.5rem;
+        padding-bottom: 0.5rem;
+      }
+
+      .status {
+        display: inline-flex;
+        width: fit-content;
+        align-items: center;
+        gap: 0.55rem;
+        padding: 0.5rem 0.75rem;
+        border: 1px solid var(--ink);
+        border-radius: 100vw;
+        font-family: var(--mono);
+        font-size: 0.65rem;
+      }
+
+      .status::before {
+        width: 0.5rem;
+        height: 0.5rem;
+        border-radius: 50%;
+        background: #28a947;
+        content: "";
+      }
+
+      .hero__side p {
+        max-width: 24rem;
+        margin: 0;
+        font-size: clamp(1rem, 0.9rem + 0.35vw, 1.25rem);
+        line-height: 1.75;
+      }
+
+      .hero__actions {
+        display: grid;
+        gap: 0.6rem;
+      }
+
+      .button {
+        display: flex;
+        justify-content: space-between;
+        padding: 0.9rem 1rem;
+        border: 1px solid var(--ink);
+        font-family: var(--mono);
+        font-size: 0.68rem;
+        text-decoration: none;
+        transition:
+          color 180ms ease,
+          background 180ms ease;
+      }
+
+      .button:hover {
+        color: var(--paper);
+        background: var(--ink);
+      }
+
+      .button--primary {
+        color: var(--paper);
+        background: var(--ink);
+      }
+
+      .button--primary:hover {
+        color: var(--ink);
+        background: var(--signal);
+      }
+
+      .section {
+        padding-block: clamp(4rem, 8vw, 8rem);
+        border-top: 1px solid var(--line);
+      }
+
+      .section-head {
+        display: grid;
+        grid-template-columns: 0.65fr 1.35fr;
+        gap: 2rem;
+        align-items: end;
+        margin-bottom: clamp(2rem, 4vw, 4rem);
+      }
+
+      .section-head h2 {
+        margin: 0;
+        font-family: var(--serif);
+        font-size: clamp(2.6rem, 5vw, 6rem);
+        font-weight: 500;
+        line-height: 0.98;
+        letter-spacing: -0.06em;
+      }
+
+      .preview-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1.45fr) minmax(17rem, 0.55fr);
+        gap: 1rem;
+        align-items: start;
+      }
+
+      .preview-card {
+        overflow: hidden;
+        border: 1px solid var(--line);
+        background: #ddd9cb;
+        text-decoration: none;
+      }
+
+      .preview-card img {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+
+      .preview-card__foot {
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+        padding: 0.8rem 1rem;
+        color: var(--paper);
+        background: var(--ink);
+        font-family: var(--mono);
+        font-size: 0.62rem;
+      }
+
+      .facts {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        margin-top: 1rem;
+        border-top: 1px solid var(--ink);
+        border-bottom: 1px solid var(--ink);
+      }
+
+      .fact {
+        min-height: 10rem;
+        padding: 1.1rem;
+        border-right: 1px solid var(--line);
+      }
+
+      .fact:last-child {
+        border-right: 0;
+      }
+
+      .fact strong {
+        display: block;
+        font-family: var(--serif);
+        font-size: clamp(2.2rem, 4vw, 4.8rem);
+        font-weight: 500;
+        line-height: 1;
+        letter-spacing: -0.06em;
+      }
+
+      .fact span {
+        display: block;
+        margin-top: 2.5rem;
+        font-size: 0.78rem;
+      }
+
+      .workflow {
+        display: grid;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        border-top: 1px solid var(--ink);
+      }
+
+      .workflow__step {
+        position: relative;
+        min-height: 15rem;
+        padding: 1rem 1rem 2rem 0;
+        border-right: 1px solid var(--line);
+      }
+
+      .workflow__step + .workflow__step {
+        padding-left: 1rem;
+      }
+
+      .workflow__step:last-child {
+        border-right: 0;
+      }
+
+      .workflow__step b {
+        display: block;
+        margin-bottom: 3rem;
+        color: var(--signal);
+        font-family: var(--mono);
+        font-size: 0.62rem;
+        font-weight: 400;
+      }
+
+      .workflow__step h3 {
+        margin: 0 0 0.8rem;
+        font-family: var(--serif);
+        font-size: clamp(1.6rem, 2.3vw, 2.6rem);
+        font-weight: 500;
+        line-height: 1.05;
+      }
+
+      .workflow__step p {
+        margin: 0;
+        color: rgba(16, 17, 15, 0.68);
+        font-size: 0.8rem;
+        line-height: 1.65;
+      }
+
+      .workflow__arrow {
+        position: absolute;
+        top: 50%;
+        right: -0.6rem;
+        z-index: 1;
+        display: grid;
+        width: 1.2rem;
+        height: 1.2rem;
+        place-items: center;
+        border-radius: 50%;
+        color: var(--paper);
+        background: var(--ink);
+        font-size: 0.62rem;
+      }
+
+      .workflow__step:last-child .workflow__arrow {
+        display: none;
+      }
+
+      .handoff {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: clamp(2rem, 6vw, 7rem);
+      }
+
+      .command {
+        margin: 1.5rem 0 0;
+        padding: 1.2rem;
+        overflow-x: auto;
+        border: 1px solid rgba(241, 238, 227, 0.2);
+        color: var(--paper);
+        background: var(--ink);
+        font-family: var(--mono);
+        font-size: 0.75rem;
+        line-height: 1.8;
+        white-space: pre;
+      }
+
+      .checklist {
+        display: grid;
+        gap: 0;
+        margin: 1.5rem 0 0;
+        padding: 0;
+        list-style: none;
+        border-top: 1px solid var(--line);
+      }
+
+      .checklist li {
+        display: grid;
+        grid-template-columns: 2rem 1fr;
+        gap: 0.8rem;
+        padding: 0.9rem 0;
+        border-bottom: 1px solid var(--line);
+        font-size: 0.86rem;
+        line-height: 1.6;
+      }
+
+      .checklist span {
+        color: var(--signal);
+        font-family: var(--mono);
+        font-size: 0.65rem;
+      }
+
+      .links {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+      }
+
+      .link-card {
+        display: grid;
+        min-height: 15rem;
+        align-content: space-between;
+        padding: 1.2rem;
+        border: 1px solid var(--ink);
+        text-decoration: none;
+      }
+
+      .link-card:hover {
+        color: var(--paper);
+        background: var(--olive);
+      }
+
+      .link-card span {
+        font-family: var(--mono);
+        font-size: 0.62rem;
+      }
+
+      .link-card strong {
+        align-self: end;
+        font-family: var(--serif);
+        font-size: clamp(2rem, 3vw, 3.6rem);
+        font-weight: 500;
+        line-height: 1;
+        letter-spacing: -0.05em;
+      }
+
+      .link-card b {
+        justify-self: end;
+        font-size: 1.3rem;
+        font-weight: 400;
+      }
+
+      .notes {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: clamp(2rem, 6vw, 7rem);
+      }
+
+      .notes p {
+        max-width: 42rem;
+        margin: 1rem 0 0;
+        font-size: 0.9rem;
+        line-height: 1.8;
+      }
+
+      footer {
+        display: flex;
+        justify-content: space-between;
+        gap: 2rem;
+        padding-block: 2rem 3rem;
+        border-top: 1px solid var(--line);
+        font-family: var(--mono);
+        font-size: 0.62rem;
+      }
+
+      @media (max-width: 900px) {
+        .hero,
+        .section-head,
+        .preview-grid,
+        .handoff,
+        .notes {
+          grid-template-columns: 1fr;
+        }
+
+        .hero {
+          min-height: auto;
+        }
+
+        .facts,
+        .workflow {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .fact:nth-child(2) {
+          border-right: 0;
+        }
+
+        .fact:nth-child(-n + 2) {
+          border-bottom: 1px solid var(--line);
+        }
+
+        .workflow__step {
+          border-bottom: 1px solid var(--line);
+        }
+
+        .workflow__arrow {
+          display: none;
+        }
+
+        .preview-grid {
+          max-width: 46rem;
+        }
+      }
+
+      @media (max-width: 620px) {
+        .topbar {
+          align-items: flex-start;
+          padding-block: 1rem;
+        }
+
+        .top-links {
+          justify-content: flex-end;
+          gap: 0.5rem 0.8rem;
+          font-size: 0.68rem;
+        }
+
+        .hero h1 {
+          font-size: clamp(3.8rem, 20vw, 6.8rem);
+        }
+
+        .facts,
+        .workflow,
+        .links {
+          grid-template-columns: 1fr;
+        }
+
+        .fact {
+          min-height: 0;
+          border-right: 0;
+          border-bottom: 1px solid var(--line);
+        }
+
+        .fact span {
+          margin-top: 1.2rem;
+        }
+
+        .workflow__step,
+        .workflow__step + .workflow__step {
+          min-height: 0;
+          padding: 1.2rem 0 1.6rem;
+        }
+
+        .workflow__step b {
+          margin-bottom: 1.2rem;
+        }
+
+        .link-card {
+          min-height: 11rem;
+        }
+
+        footer {
+          flex-direction: column;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+
+        .button {
+          transition: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="topbar shell">
+      <a class="mark" href="#top" aria-label="返回项目总览顶部">YM<sup>26</sup></a>
+      <nav class="top-links" aria-label="项目快速链接">
+        <a href="#preview">最终预览</a>
+        <a href="#status">部署状态</a>
+        <a href="#workflow">更新流程</a>
+        <a href="#handoff">下次打开</a>
+        <a href="#resources">项目入口</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero shell">
+        <div>
+          <p class="eyebrow">[PORTFOLIO HANDOFF / 2026-11-21]</p>
+          <h1>项目总览<br /><span>一次打开。</span></h1>
+        </div>
+
+        <div class="hero__side">
+          <span class="status">LIVE · DEPLOYMENT SUCCESS</span>
+          <p>
+            这里集中整理杨莫作品集的最终预览、GitHub 仓库、自动部署流程与后续更新方式。日常修改完成后，只需提交并推送即可发布。
+          </p>
+          <div class="hero__actions">
+            <a
+              class="button button--primary"
+              href="https://105141084.github.io/yang-mo-portfolio/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <span>查看线上最终网站</span>
+              <span>↗</span>
+            </a>
+            <a class="button" href="./index.html">
+              <span>打开本地静态页面</span>
+              <span>↗</span>
+            </a>
+            <a
+              class="button"
+              href="https://github.com/105141084/yang-mo-portfolio"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <span>打开 GitHub 仓库</span>
+              <span>↗</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section shell" id="preview">
+        <div class="section-head">
+          <p class="eyebrow">[01 / FINAL PREVIEW]</p>
+          <h2>桌面与手机<br />最终预览</h2>
+        </div>
+
+        <div class="preview-grid">
+          <a
+            class="preview-card"
+            href="https://105141084.github.io/yang-mo-portfolio/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <img
+              src="./project-overview/final-preview-desktop.png"
+              alt="杨莫作品集最终桌面端首屏预览"
+              width="1440"
+              height="1000"
+            />
+            <span class="preview-card__foot">
+              <span>DESKTOP / 1440 PX</span>
+              <span>OPEN LIVE SITE ↗</span>
+            </span>
+          </a>
+          <a
+            class="preview-card"
+            href="https://105141084.github.io/yang-mo-portfolio/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <img
+              src="./project-overview/final-preview-mobile.png"
+              alt="杨莫作品集最终手机端首屏预览"
+              width="390"
+              height="844"
+            />
+            <span class="preview-card__foot">
+              <span>MOBILE / 390 PX</span>
+              <span>OPEN LIVE SITE ↗</span>
+            </span>
+          </a>
+        </div>
+      </section>
+
+      <section class="section shell" id="status">
+        <div class="section-head">
+          <p class="eyebrow">[02 / RELEASE STATUS]</p>
+          <h2>发布状态<br />与验收结果</h2>
+        </div>
+
+        <div class="facts">
+          <div class="fact">
+            <strong>200</strong>
+            <span>线上页面 HTTP 状态</span>
+          </div>
+          <div class="fact">
+            <strong>51 MB</strong>
+            <span>静态发布包体积</span>
+          </div>
+          <div class="fact">
+            <strong>34</strong>
+            <span>已加载图片资源</span>
+          </div>
+          <div class="fact">
+            <strong>03</strong>
+            <span>视频资源·全部可播放</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section shell" id="workflow">
+        <div class="section-head">
+          <p class="eyebrow">[03 / WORKFLOW]</p>
+          <h2>从修改到上线的<br />自动工作流</h2>
+        </div>
+
+        <div class="workflow">
+          <article class="workflow__step">
+            <b>01 / EDIT</b>
+            <h3>修改源文件</h3>
+            <p>在本地调整页面、样式、图片或视频素材。</p>
+            <i class="workflow__arrow">→</i>
+          </article>
+          <article class="workflow__step">
+            <b>02 / BUILD</b>
+            <h3>构建发布包</h3>
+            <p>仅收集页面实际引用的文件，过滤过程素材和废弃资源。</p>
+            <i class="workflow__arrow">→</i>
+          </article>
+          <article class="workflow__step">
+            <b>03 / PUSH</b>
+            <h3>提交到 main</h3>
+            <p>提交并推送后自动触发 GitHub Actions。</p>
+            <i class="workflow__arrow">→</i>
+          </article>
+          <article class="workflow__step">
+            <b>04 / VERIFY</b>
+            <h3>自动检查</h3>
+            <p>验证引用资源、发布包大小和构建完整性。</p>
+            <i class="workflow__arrow">→</i>
+          </article>
+          <article class="workflow__step">
+            <b>05 / LIVE</b>
+            <h3>发布到 Pages</h3>
+            <p>部署完成后，刷新线上地址即可查看最新版本。</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section shell" id="handoff">
+        <div class="section-head">
+          <p class="eyebrow">[04 / NEXT TIME]</p>
+          <h2>下次打开<br />按这里开始</h2>
+        </div>
+
+        <div class="handoff">
+          <div>
+            <p class="eyebrow">推荐入口</p>
+            <ol class="checklist">
+              <li><span>01</span><strong>双击项目根目录的“项目总览.html”</strong></li>
+              <li><span>02</span><strong>点击“查看线上最终网站”确认最新版本</strong></li>
+              <li><span>03</span><strong>需要修改时，打开根目录源文件编辑</strong></li>
+              <li><span>04</span><strong>提交并推送，等待 Actions 自动部署</strong></li>
+            </ol>
+          </div>
+
+          <div>
+            <p class="eyebrow">更新命令</p>
+            <pre class="command">git add .
+git commit -m "更新作品集内容"
+git push</pre>
+            <p class="eyebrow" style="margin-top: 1.5rem">本地构建检查</p>
+            <pre class="command">npm run build:static</pre>
+          </div>
+        </div>
+      </section>
+
+      <section class="section shell" id="resources">
+        <div class="section-head">
+          <p class="eyebrow">[05 / RESOURCES]</p>
+          <h2>关键入口<br />集中管理</h2>
+        </div>
+
+        <div class="links">
+          <a
+            class="link-card"
+            href="https://github.com/105141084/yang-mo-portfolio"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <span>SOURCE / REPOSITORY</span>
+            <strong>GitHub 仓库</strong>
+            <b>↗</b>
+          </a>
+          <a
+            class="link-card"
+            href="https://github.com/105141084/yang-mo-portfolio/actions"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <span>CI / DEPLOYMENTS</span>
+            <strong>自动部署记录</strong>
+            <b>↗</b>
+          </a>
+          <a
+            class="link-card"
+            href="https://github.com/105141084/yang-mo-portfolio/blob/main/.github/workflows/pages.yml"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <span>AUTOMATION / WORKFLOW</span>
+            <strong>Pages 工作流</strong>
+            <b>↗</b>
+          </a>
+          <a class="link-card" href="./README.md">
+            <span>DOCUMENTATION / LOCAL</span>
+            <strong>项目说明</strong>
+            <b>↗</b>
+          </a>
+        </div>
+      </section>
+
+      <section class="section shell">
+        <div class="notes">
+          <div>
+            <p class="eyebrow">[PUBLISH RULE]</p>
+            <p>
+              线上发布包只包含页面实际引用的 HTML、CSS、JS、图片和视频。过程截图、PPT 源文件、本地输出目录与废弃素材不会进入发布包。
+            </p>
+          </div>
+          <div>
+            <p class="eyebrow">[STATIC LIMIT]</p>
+            <p>
+              GitHub Pages 适合当前纯静态作品集。发布包约 51 MB，当前远低于 1 GB 站点上限；若未来访问量增加，可优先压缩视频与图片。
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="shell">
+      <span>© 2026 YANG MO · PORTFOLIO HANDOFF</span>
+      <span>AUTO-DEPLOY VERIFIED · 2026-11-21</span>
+      <a href="#top">BACK TO TOP ↑</a>
+    </footer>
+  </body>
+</html>

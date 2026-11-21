@@ -1,5 +1,14 @@
 # 杨莫作品集
 
+> 下次打开项目时，建议直接双击根目录的 **`项目总览.html`**。线上预览、GitHub 仓库、自动部署、更新命令与发布规则都已集中在该页面。
+
+快速入口：
+
+- [线上最终网站](https://105141084.github.io/yang-mo-portfolio/)
+- [GitHub 仓库](https://github.com/105141084/yang-mo-portfolio)
+- [自动部署记录](https://github.com/105141084/yang-mo-portfolio/actions)
+- [本地项目总览](./项目总览.html)
+
 当前版本是一版可本地预览的交互作品集原型，主要参考以下三个站点：
 
 - [moenamer.com](https://moenamer.com)：运营岗位叙事、个人定位、过程与案例组织。
