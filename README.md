@@ -40,6 +40,12 @@ npm run build:static
 https://<GitHub用户名>.github.io/<仓库名>/
 ```
 
+当前线上地址：
+
+```text
+https://105141084.github.io/yang-mo-portfolio/
+```
+
 更新网站时，修改源文件后提交并推送：
 
 ```powershell
