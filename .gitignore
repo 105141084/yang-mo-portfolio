@@ -1,0 +1,9 @@
+node_modules/
+work/
+outputs/
+*.zip
+_site/
+$null
+*.log
+.DS_Store
+Thumbs.db
